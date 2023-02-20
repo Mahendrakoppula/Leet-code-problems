@@ -50,33 +50,47 @@ class Solution {
 //     return result;
 // }
     
-      List<List<Integer>> result = new ArrayList<>();
+//       List<List<Integer>> result = new ArrayList<>();
 
-    List<int[]> distances = new ArrayList<>();
-    for (int i = 0; i < arr.length; i++) {
-        int[] pair = new int[2];
-        pair[0] = arr[i];
-        pair[1] = Math.abs(arr[i] - x);
-        distances.add(pair);
-    }
+//     List<int[]> distances = new ArrayList<>();
+//     for (int i = 0; i < arr.length; i++) {
+//         int[] pair = new int[2];
+//         pair[0] = arr[i];
+//         pair[1] = Math.abs(arr[i] - x);
+//         distances.add(pair);
+//     }
 
-    distances.sort(Comparator.comparingInt(a -> a[1]));
+//     distances.sort(Comparator.comparingInt(a -> a[1]));
 
-    for (int i = 0; i < k; i++) {
-        List<Integer> temp = new ArrayList<>();
-        temp.add(distances.get(i)[0]);
-        result.add(temp);
-    }
+//     for (int i = 0; i < k; i++) {
+//         List<Integer> temp = new ArrayList<>();
+//         temp.add(distances.get(i)[0]);
+//         result.add(temp);
+//     }
 
-    result.sort(Comparator.comparingInt(a -> a.get(0)));
+//     result.sort(Comparator.comparingInt(a -> a.get(0)));
     
-    // Flatten the nested list of lists into a single list of integers
-    List<Integer> flattenedResult = new ArrayList<>();
-    for (List<Integer> sublist : result) {
-        flattenedResult.addAll(sublist);
-    }
+//     // Flatten the nested list of lists into a single list of integers
+//     List<Integer> flattenedResult = new ArrayList<>();
+//     for (List<Integer> sublist : result) {
+//         flattenedResult.addAll(sublist);
+//     }
 
-    return flattenedResult;
-    }
+//     return flattenedResult;
+//     }
 
+    int left = 0, right = arr.length - 1;
+    while (right - left >= k) {
+        if (Math.abs(arr[left] - x) > Math.abs(arr[right] - x)) {
+            left++;
+        } else {
+            right--;
+        }
+    }
+    List<Integer> result = new ArrayList<>();
+    for (int i = left; i <= right; i++) {
+        result.add(arr[i]);
+    }
+    return result;
+}
 }
