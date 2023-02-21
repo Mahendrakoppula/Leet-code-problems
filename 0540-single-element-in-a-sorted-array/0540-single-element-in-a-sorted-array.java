@@ -10,8 +10,7 @@ class Solution {
         if (nums[n - 2] != nums[n - 1]){
             return nums[n-1];
             
-        }
-            
+        }  
             while(i<nums.length-1) {
                 if (nums[i] != nums[j]) {
                     result = nums[i];
@@ -20,7 +19,6 @@ class Solution {
 
                     i = i + 2;
                     j = j + 2;
-//                break;
                 }
             }
             return result;
