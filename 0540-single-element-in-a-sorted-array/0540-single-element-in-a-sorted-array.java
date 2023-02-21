@@ -1,8 +1,8 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-//          int i=0;
-//             int result=0;
-//             int j=1;
+         int i=0;
+            int result=0;
+            int j=1;
         int n=nums.length;
         if(nums.length<=1){
             return nums[0];
@@ -11,6 +11,9 @@ class Solution {
             return nums[n-1];
             
         }  
+         if (nums[i] != nums[j]) {
+             return nums[i];
+         }
 //             while(i<nums.length-1) {
 //                 if (nums[i] != nums[j]) {
 //                     result = nums[i];
@@ -44,21 +47,14 @@ class Solution {
         
         int start = 0, end = nums.length - 1, mid;
  
-        // For Edge Cases
-        if (nums.length
-            == 1) // If only one element is in the array
-            return nums[0];
+//         // For Edge Cases
+//         if (nums.length == 1) // If only one element is in the array
+//             return nums[0];
  
-        if (nums[start]
-            != nums[start + 1]) // If the first element
-                                // is the element that
-                                // appears only once
-            return nums[start];
- 
-        if (nums[end]
-            != nums[end- 1]) // If Last element is the element
-                          // that appears only once
-            return nums[end];
+//         if (nums[end]
+//             != nums[end- 1]) // If Last element is the element
+//                           // that appears only once
+//             return nums[end];
  
         // Binary Search
         while (start <= end) {
