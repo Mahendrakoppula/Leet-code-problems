@@ -3,14 +3,14 @@ class Solution {
 //          int i=0;
 //             int result=0;
 //             int j=1;
-//         int n=nums.length;
-//         if(nums.length<=1){
-//             return nums[0];
-//         }
-//         if (nums[n - 2] != nums[n - 1]){
-//             return nums[n-1];
+        int n=nums.length;
+        if(nums.length<=1){
+            return nums[0];
+        }
+        if (nums[n - 2] != nums[n - 1]){
+            return nums[n-1];
             
-//         }  
+        }  
 //             while(i<nums.length-1) {
 //                 if (nums[i] != nums[j]) {
 //                     result = nums[i];
@@ -56,8 +56,7 @@ class Solution {
             return nums[start];
  
         if (nums[end]
-            != nums[end
-                    - 1]) // If Last element is the element
+            != nums[end- 1]) // If Last element is the element
                           // that appears only once
             return nums[end];
  
