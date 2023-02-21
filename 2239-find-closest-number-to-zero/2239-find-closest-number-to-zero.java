@@ -21,14 +21,14 @@ class Solution {
 //         }
 //         return close;
         
-      int closest = nums[0];
-    for (int i = 0; i < nums.length; i++) {
-        if (Math.abs(nums[i]) < Math.abs(closest)) {
-            closest = nums[i];
-        } else if (Math.abs(nums[i]) == Math.abs(closest)) {
-            closest = Math.max(closest, nums[i]);
+   int close=nums[0];
+        for(int i=0;i<nums.length;i++){
+            if(Math.abs(nums[i])<Math.abs(close)){
+                    close=nums[i];
+        }else if(Math.abs(nums[i])==Math.abs(close)){
+            close=Math.max(nums[i],close);
         }
     }
-    return closest;
+        return close;
     }
-    }
+}
