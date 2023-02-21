@@ -45,35 +45,25 @@ class Solution {
 //             }
 //         }
         
-        int start = 0, end = nums.length - 1, mid;
- 
-//         // For Edge Cases
-//         if (nums.length == 1) // If only one element is in the array
-//             return nums[0];
- 
-//         if (nums[end]
-//             != nums[end- 1]) // If Last element is the element
-//                           // that appears only once
-//             return nums[end];
- 
-        // Binary Search
-        while (start <= end) {
-            mid = start + (end - start) / 2;
-            // CASE 1
-            if (nums[mid] != nums[mid - 1]
-                && nums[mid] != nums[mid + 1])
+        
+         // Binary Search
+       int lo=0;
+        int hi=nums.length-1;
+        int mid=0;
+        
+        while(lo<=hi){
+            mid=lo+(hi-lo)/2;
+            
+            if(nums[mid]!=nums[mid-1]&&nums[mid]!=nums[mid+1]){
                 return nums[mid];
-            // CASE 2 and CASE 3
-            else if ((nums[mid] == nums[mid + 1]
-                      && mid % 2 == 0)
-                     || (nums[mid] == nums[mid - 1]
-                         && mid % 2 != 0))
-                start = mid + 1;
-            // CASE 4 and CASE 5
-            else
-                end = mid - 1;
+            }
+            
+            if((nums[mid]==nums[mid+1] && mid%2==0)||(nums[mid]==nums[mid-1] && mid%2!=0)){
+                lo=mid+1;
+            }else{
+                hi=mid-1;
+            }
         }
-        // If no such element found
-        return -1;
+        return 0;
     }
 }
