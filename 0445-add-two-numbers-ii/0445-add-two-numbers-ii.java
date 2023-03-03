@@ -19,26 +19,28 @@ class Solution {
     l2 = reverse(l2);
     
     // Add the two linked lists
-    ListNode result = null;
-    int carry = 0;
-    while (l1 != null || l2 != null || carry != 0) {
-        int val1 = l1 != null ? l1.val : 0;
-        int val2 = l2 != null ? l2.val : 0;
-        int sum = val1 + val2 + carry;
-        carry = sum / 10;
-        sum = sum % 10;
-        ListNode node = new ListNode(sum);
-        node.next = result;
-        result = node;
-        if (l1 != null) {
-            l1 = l1.next;
-        }
-        if (l2 != null) {
-            l2 = l2.next;
-        }
-    }
-    
-    return result;
+ ListNode result = null;
+            ListNode curr = null;
+            int sum = 0;
+            while (l1 != null || l2 != null || sum > 0) {
+                if (l1 != null) {
+                    sum += l1.val;
+                    l1 = l1.next;
+                }
+                if (l2!= null) {
+                    sum += l2.val;
+                    l2 = l2.next;
+                }
+                if (result == null) {
+                    result = new ListNode(sum % 10);
+                    curr = result;
+                } else {
+                    curr.next = new ListNode(sum % 10);
+                    curr = curr.next;
+                }
+                sum /= 10;
+            }
+            return reverse(result);
 }
 
 private int getLength(ListNode head) {
@@ -61,5 +63,4 @@ private ListNode reverse(ListNode head) {
     }
     return prev;
 }
-
 }
