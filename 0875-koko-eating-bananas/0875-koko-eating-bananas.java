@@ -6,6 +6,10 @@ class Solution {
 
         int low = 1, high = max;
 
+        int hi=max;
+        if(h==piles.length){
+            return max;
+        }
         while (low < high) {
             int mid = low + (high - low) / 2;
 
