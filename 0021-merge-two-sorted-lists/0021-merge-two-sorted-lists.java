@@ -29,12 +29,12 @@ class Solution {
         }
             temp=temp.next;
         }
-        temp.next = list1 == null? list2:list1;
-        // if(list1==null){
-        //     temp.next=list2;
-        // }else{
-        //     temp.next=list1;
-        // }
+        // temp.next = list1 == null? list2:list1;
+        if(list1==null){
+            temp.next=list2;
+        }else{
+            temp.next=list1;
+        }
         return ansnode.next;
     }
 }
