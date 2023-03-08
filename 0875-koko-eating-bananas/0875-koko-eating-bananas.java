@@ -1,26 +1,52 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
         
-         int low = 1;
-        int high = Arrays.stream(piles).max().getAsInt();
-        int mid = 0;
-        long hours = 0;
-        
-        while (low <= high) {
-            mid = (low + high) / 2;
-            hours = 0;
-            for (int pile : piles) {
-                hours += (long) Math.ceil((double) pile / mid);
-                if(hours > h){break;}
-            }
-            if (hours > h) {
-                low = mid + 1;
+                int max = Integer.MIN_VALUE;
+        for (int pile : piles) max = Math.max(max, pile);
+
+        int low = 1, high = max;
+
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+
+            if (canEatAllBananasWithSpeedK(piles, h, mid)) {
+                high = mid;
             } else {
-                high = mid - 1;
+                low = mid + 1;
             }
         }
-        
+
         return low;
+    }
+
+    private boolean canEatAllBananasWithSpeedK(int[] piles, int h, int k) {
+        int hours = 0;
+        for (int pile : piles) {
+            hours += Math.ceil(1.0 * pile / k);
+        }
+        return hours <= h;
+
+        
+//          int low = 1;
+//         int high = Arrays.stream(piles).max().getAsInt();
+//         int mid = 0;
+//         long hours = 0;
+        
+//         while (low <= high) {
+//             mid = (low + high) / 2;
+//             hours = 0;
+//             for (int pile : piles) {
+//                 hours += (long) Math.ceil((double) pile / mid);
+//                 if(hours > h){break;}
+//             }
+//             if (hours > h) {
+//                 low = mid + 1;
+//             } else {
+//                 high = mid - 1;
+//             }
+//         }
+        
+//         return low;
         
 //         int lo=1;
 //          int max=Integer.MIN_VALUE;
