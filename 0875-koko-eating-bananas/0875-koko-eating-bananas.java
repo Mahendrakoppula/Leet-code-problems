@@ -1,5 +1,27 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
+        
+         int low = 1;
+        int high = Arrays.stream(piles).max().getAsInt();
+        int mid = 0;
+        long hours = 0;
+        
+        while (low <= high) {
+            mid = (low + high) / 2;
+            hours = 0;
+            for (int pile : piles) {
+                hours += (long) Math.ceil((double) pile / mid);
+                if(hours > h){break;}
+            }
+            if (hours > h) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        
+        return low;
+        
 //         int lo=1;
 //          int max=Integer.MIN_VALUE;
         
@@ -30,7 +52,6 @@ class Solution {
 //     }
 //     public boolean isPossible(int[] piles,int sp,int h){
 //         int time=0;
-        
 //         // for(int i=0;i<piles.length;i++){
 //         //     time+=(int)Math.ceil(piles[i]*1.0/sp);
 //         // }
@@ -61,35 +82,35 @@ class Solution {
 //         return hours <= h;
         
         
-        int l = 1;
-        int r = piles[0];
-        for(int i = 0;i<piles.length;i++){
-            r=Math.max(r,piles[i]);
-        }
+//         int l = 1;
+//         int r = piles[0];
+//         for(int i = 0;i<piles.length;i++){
+//             r=Math.max(r,piles[i]);
+//         }
         
-        int m;        
-        int ans = -1;
-        while(l<=r){
-            m = (l+r)/2; 
-            if(check(piles, h,m)){
-                r = m-1;
-                ans = m;
-            }else{
-                l = m+1;
-            }
-        }
-        return ans;
-    }
+//         int m;        
+//         int ans = -1;
+//         while(l<=r){
+//             m = (l+r)/2; 
+//             if(check(piles, h,m)){
+//                 r = m-1;
+//                 ans = m;
+//             }else{
+//                 l = m+1;
+//             }
+//         }
+//         return ans;
+//     }
 
-    public boolean check(int[] piles, int h, int k){
-        if(k ==0)return false;
-        int i = 0;
-        while(h>=0 && i<piles.length){
+//     public boolean check(int[] piles, int h, int k){
+//         if(k ==0)return false;
+//         int i = 0;
+//         while(h>=0 && i<piles.length){
 
-            h -=Math.ceil((double)piles[i]/k);
-            i++;
-        }
-        return (h>=0 && i == piles.length);
+//             h -=Math.ceil((double)piles[i]/k);
+//             i++;
+//         }
+//         return (h>=0 && i == piles.length);
 
     }
 }
