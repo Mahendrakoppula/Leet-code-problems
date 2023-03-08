@@ -1,103 +1,35 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int h) {
+   int lo=1;
+        int max=0;
         
-                int max = Integer.MIN_VALUE;
-        for (int pile : piles) max = Math.max(max, pile);
-
-        int low = 1, high = max;
-
-   
-        if(high==piles.length){
+        for(int val: piles){
+            max=Math.max(val,max);
+        }
+        
+       int hi=max;
+        
+        if(max==piles.length){
             return max;
         }
-        while (low < high) {
-            int mid = low + (high - low) / 2;
-
-            if (canEatAllBananasWithSpeedK(piles, h, mid)) {
-                high = mid;
-            } else {
-                low = mid + 1;
+        
+        while(lo<hi){
+            int mid=(lo+hi)/2;
+            if(BananasCanBeEaten(piles,h,mid)){
+            
+                hi=mid;
+            }else{
+                lo=mid+1;
             }
         }
-
-        return low;
+        return lo;
     }
-
-    private boolean canEatAllBananasWithSpeedK(int[] piles, int h, int k) {
-        int hours = 0;
-        for (int pile : piles) {
-            hours += Math.ceil(1.0 * pile / k);
+        
+        public boolean BananasCanBeEaten(int[] piles,int h,int mid){
+            int k=0;
+            for(int val: piles){
+                k+=Math.ceil(1.0*val/mid);
+            }
+            return k<=h;
         }
-        return hours <= h;
-
-        
-//          int low = 1;
-//         int high = Arrays.stream(piles).max().getAsInt();
-//         int mid = 0;
-//       int hours = 0;
-        
-//         while (low <= high) {
-//             mid = (low + high) / 2;
-//             hours = 0;
-//             for (int pile : piles) {
-//                 hours += Math.ceil((double) pile / mid);
-//                 if(hours > h){break;}
-//             }
-//             if (hours > h) {
-//                 low = mid + 1;
-//             } else {
-//                 high = mid - 1;
-//             }
-//         }
-        
-//         return low;
-        
-
-//         int lo=1;
-//         int max=Integer.MIN_VALUE;
-//         for(int val: piles){
-//             max=Math.max(val,max);
-//         }
-//         int hi=max;
-//         if(hi==piles.length){
-//             return max;
-//         }
-//         int speed=Integer.MAX_VALUE;
-
-//         while(lo<=hi){
-//             int sp=lo+(hi-lo)/2;
-
-//             if(isPossible(piles,sp,h)==true){
-//                 speed=sp;
-//                 hi=sp-1;
-//             }
-//             else{
-//                 lo=sp+1;
-//             }
-//         }
-//         return speed;
-//     }
-//     static boolean isPossible(int[] piles,int sp,int h){
-//         int time=0;
-//         for(int i=0;i<piles.length;i++){
-//             time+=(int)Math.ceil(piles[i]*1.0/sp);
-//         }
-//         return time<=h;
-        
-//           int maxPile = Integer.MIN_VALUE;
-//     for (int pile : piles) {
-//         maxPile = Math.max(maxPile, pile);
-//     }
-    
-//     for (int k = 1; k <= maxPile; k++) {
-//         int time = 0;
-//         for (int pile : piles) {
-//             time += (int) Math.ceil((double) pile / k);
-//         }
-//         if (time <= h) {
-//             return k;
-//         }
-//     }
-//     return maxPile;
-}
 }
