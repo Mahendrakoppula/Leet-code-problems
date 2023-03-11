@@ -1,6 +1,6 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        Set<Integer> st1=new HashSet<>();
+        HashSet<Integer> st1=new HashSet<>();
         
         for(int i=0;i<nums1.length;i++){
             st1.add(nums1[i]);
