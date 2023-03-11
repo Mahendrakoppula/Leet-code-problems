@@ -41,28 +41,67 @@ class Solution {
 //             result[k++]=val;
 //         }
 //         return result;
-        Arrays.sort(nums1);
-        Arrays.sort(nums2);
-          int i = 0, j = 0;
-    Set<Integer> set = new HashSet<>();
+        
+        //two pointer
+//         Arrays.sort(nums1);
+//         Arrays.sort(nums2);
+//           int i = 0, j = 0;
+//     Set<Integer> set = new HashSet<>();
     
-    while (i < nums1.length && j < nums2.length) {
-        if (nums1[i] == nums2[j]) {
-            set.add(nums1[i]);
-            i++;
-            j++;
-        } else if (nums1[i] < nums2[j]) {
-            i++;
-        } else {
-            j++;
+//     while (i < nums1.length && j < nums2.length) {
+//         if (nums1[i] == nums2[j]) {
+//             set.add(nums1[i]);
+//             i++;
+//             j++;
+//         } else if (nums1[i] < nums2[j]) {
+//             i++;
+//         } else {
+//             j++;
+//         }
+//     }
+
+//     int[] result = new int[set.size()];
+//     int k = 0;
+//     for (int num : set) {
+//         result[k++] = num;
+//     }
+//     return result;
+        
+          // Sort nums1 in ascending order
+    Arrays.sort(nums1);
+
+    // Use a set to store the intersection of nums1 and nums2
+    Set<Integer> result = new HashSet<>();
+
+    // Traverse nums2 and perform binary search in nums1
+    for (int num : nums2) {
+        if (binarySearch(nums1, num)) {
+            result.add(num);
         }
     }
 
-    int[] result = new int[set.size()];
-    int k = 0;
-    for (int num : set) {
-        result[k++] = num;
+    // Convert the result set to an array and return it
+    int[] resultArr = new int[result.size()];
+    int i = 0;
+    for (int num : result) {
+        resultArr[i++] = num;
     }
-    return result;
-    }
+    return resultArr;
 }
+
+// Binary search function
+private boolean binarySearch(int[] nums, int target) {
+    int left = 0, right = nums.length - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (nums[mid] == target) {
+            return true;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return false;
+}
+    }
