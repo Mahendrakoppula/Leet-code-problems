@@ -68,40 +68,63 @@ class Solution {
 //     return result;
         
           // Sort nums1 in ascending order
-    Arrays.sort(nums1);
+//     Arrays.sort(nums1);
 
-    // Use a set to store the intersection of nums1 and nums2
-    Set<Integer> result = new HashSet<>();
+//     // Use a set to store the intersection of nums1 and nums2
+//     Set<Integer> result = new HashSet<>();
 
-    // Traverse nums2 and perform binary search in nums1
-    for (int num : nums2) {
-        if (binarySearch(nums1, num)) {
-            result.add(num);
+//     // Traverse nums2 and perform binary search in nums1
+//     for (int num : nums2) {
+//         if (binarySearch(nums1, num)) {
+//             result.add(num);
+//         }
+//     }
+
+//     // Convert the result set to an array and return it
+//     int[] resultArr = new int[result.size()];
+//     int i = 0;
+//     for (int num : result) {
+//         resultArr[i++] = num;
+//     }
+//     return resultArr;
+// }
+
+// // Binary search function
+// private boolean binarySearch(int[] nums, int target) {
+//     int left = 0, right = nums.length - 1;
+//     while (left <= right) {
+//         int mid = left + (right - left) / 2;
+//         if (nums[mid] == target) {
+//             return true;
+//         } else if (nums[mid] < target) {
+//             left = mid + 1;
+//         } else {
+//             right = mid - 1;
+//         }
+//     }
+//     return false;
+// }
+//     }
+       
+              boolean[] arr =new boolean[1024];
+        for(int i:nums1)
+            arr[i]=true;
+
+        int ans[]=new int[Math.min(nums1.length,nums2.length)];
+        int cnt=0;
+        for(int i:nums2){
+            if(arr[i]){
+                ans[cnt]=i;
+                cnt++;
+                arr[i]=false;
+            }
         }
-    }
 
-    // Convert the result set to an array and return it
-    int[] resultArr = new int[result.size()];
-    int i = 0;
-    for (int num : result) {
-        resultArr[i++] = num;
+        return Arrays.copyOf(ans,cnt);
+        
     }
-    return resultArr;
 }
-
-// Binary search function
-private boolean binarySearch(int[] nums, int target) {
-    int left = 0, right = nums.length - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target) {
-            return true;
-        } else if (nums[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return false;
-}
-    }
+        
+        
+        
+        
