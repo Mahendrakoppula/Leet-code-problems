@@ -24,17 +24,39 @@ class Solution {
     //     }
     // }
     // return count;
-        int ans = 0;
-    // Arrays.sort(nums);
-         Integer[] integers = Arrays.stream(nums).boxed().toArray(Integer[]::new); // convert int[] to Integer[]
-    Arrays.sort(integers, Comparator.reverseOrder()); // sort in reverse order
-    long[] temp = new long[nums.length];
-    temp[0] = integers[0];
-    if (temp[0] > 0) ans++;
-    for (int i = 1; i < nums.length; i++) {
-        temp[i] = temp[i-1] + integers[i];
-        if (temp[i] > 0) ans++;
-    }
-    return ans;
+    //     int ans = 0;
+    // // Arrays.sort(nums);
+    //      Integer[] integers = Arrays.stream(nums).boxed().toArray(Integer[]::new); // convert int[] to Integer[]
+    // Arrays.sort(integers, Comparator.reverseOrder()); // sort in reverse order
+    // long[] temp = new long[nums.length];
+    // temp[0] = integers[0];
+    // if (temp[0] > 0) 
+    //     ans++;
+    // for (int i = 1; i < nums.length; i++) {
+    //     temp[i] = temp[i-1] + integers[i];
+    //     if (temp[i] > 0) 
+    //         ans++;
+    // }
+    // return ans;
+        
+          Arrays.sort(nums);
+        int n= nums.length;
+
+        if(nums[n-1]<=0){
+            return 0;
+        }
+        long prefix = nums[n-1];
+        int count= 1;
+        
+        for(int i=1;i<nums.length;i++){
+            prefix += nums[n-1-i];
+            if(prefix<=0){
+                break;
+            }
+            count++;
+            
+        }
+        
+        return count;  
     }
 }
