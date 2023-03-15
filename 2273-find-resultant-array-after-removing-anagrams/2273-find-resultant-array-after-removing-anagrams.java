@@ -85,10 +85,12 @@ class Solution {
         int i=0,j=1;
         while(j<words.length){
             while(j<words.length && isAnagram(words[i],words[j]))
+            // if(isAnagram(words[i],words[j])){
                 j++;
+            // }
             result.add(words[i]);
             i=j;
-        }
+         }
         return result;
     }
 
