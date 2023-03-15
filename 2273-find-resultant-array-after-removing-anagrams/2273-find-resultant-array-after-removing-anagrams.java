@@ -92,14 +92,27 @@ class Solution {
         return result;
     }
 
-    private boolean isAnagram(String s1,String s2){
-        char[] arr = new char[26];
-        for (char c: s1.toCharArray()) arr[c-'a']++;
-        for (char c: s2.toCharArray()) arr[c-'a']--;
-        for(char c: arr)
-            if(c!=0)
-                return false;
-        return true;
+    private boolean isAnagram(String str1,String str2){
+        // char[] arr = new char[26];
+        // for (char c: s1.toCharArray()) arr[c-'a']++;
+        // for (char c: s2.toCharArray()) arr[c-'a']--;
+        // for(char c: arr)
+        //     if(c!=0)
+        //         return false;
+        // return true;
+        char[] arr1 = str1.toCharArray();
+            char[] arr2 = str2.toCharArray();
+
+            // Sort the two arrays
+            Arrays.sort(arr1);
+
+            Arrays.sort(arr2);
+
+            // Convert the sorted arrays back to strings and compare them
+            String sortedStr1 = new String(arr1);
+            String sortedStr2 = new String(arr2);
+
+            return sortedStr1.equals(sortedStr2);
 }
 
     }
