@@ -26,6 +26,7 @@ public class Solution {
 //         }
 //         return true;
         
+        //Two Pointer
         Set<ListNode>st= new HashSet<>();
         while(head!=null){
             if(st.contains(head)){
