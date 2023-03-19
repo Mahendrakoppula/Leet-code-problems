@@ -18,6 +18,28 @@ class Solution {
         }
         res += dfs(nums, k, seen, n, i + 1);
         return res;
+        
+        
+//         int[] memo = new int[nums.length];
+//         Arrays.fill(memo, -1);
+//         int n = nums.length;
+//         return dfs(nums, k, memo, n, 0) - 1;
+//     }
+    
+//     private int dfs(int[] nums, int k, int[] memo, int n, int i) {
+//         if (i == n) {
+//             return 1;
+//         }
+//         if (memo[i] != -1) {
+//             return memo[i];
+//         }
+//         int res = 0;
+//         if (i == 0 || nums[i] - nums[i-1] > k) {
+//             res += dfs(nums, k, memo, n, i + 1);
+//         }
+//         res += dfs(nums, k, memo, n, i + 1);
+//         memo[i] = res;
+//         return res;
     }
 }
 
