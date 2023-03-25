@@ -15,6 +15,7 @@ class Solution {
 //         }
 //         return len;
     
+        
     int n = s.length();
     int maxlen = 0;
     Set<Character> set = new HashSet<>();
@@ -32,5 +33,31 @@ class Solution {
     }
     
     return maxlen;
+        
+        
+//         int n = s.length();
+//     int maxlen = 0;
+    
+//     for (int i = 0; i < n; i++) {
+//         for (int j = i; j < n; j++) {
+//             if (allUnique(s, i, j)) {
+//                 maxlen = Math.max(maxlen, j - i + 1);
+//             }
+//         }
+//     }
+    
+//     return maxlen;
+// }
+
+// public static boolean allUnique(String s, int start, int end) {
+//     Set<Character> set = new HashSet<>();
+//     for (int i = start; i <= end; i++) {
+//         char ch = s.charAt(i);
+//         if (set.contains(ch)) {
+//             return false;
+//         }
+//         set.add(ch);
+//     }
+//     return true;
     }
 }
