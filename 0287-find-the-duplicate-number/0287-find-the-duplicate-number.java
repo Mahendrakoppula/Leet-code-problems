@@ -48,15 +48,27 @@ class Solution {
         
 //         return slow;
         
-            for (int i = 0; i < nums.length; i++) {
-            int index = Math.abs(nums[i]);
-            if (nums[index] < 0) {
-                return index;
-            } else {
-                nums[index] = -nums[index];
-            }
-        }
+//             for (int i = 0; i < nums.length; i++) {
+//             int index = Math.abs(nums[i]);
+//             if (nums[index] < 0) {
+//                 return index;
+//             } else {
+//                 nums[index] = -nums[index];
+//             }
+//         }
         
-        return -1;
+//         return -1;
+        
+        
+        boolean [] array = new boolean[nums.length+1];
+
+    for(int i : nums){
+        if(array[i]==true){
+            return i;
+        }
+        array[i]=true;
+    }
+
+    return -1;
     }
 }
