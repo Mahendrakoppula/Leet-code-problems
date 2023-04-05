@@ -19,44 +19,55 @@ class Solution {
         // return sum;
         
         
-//        int ans = 0;
-// if (numOnes <= k) {
-//     ans += numOnes;
-//     k -= numOnes;
-// } else {
-//     ans += k;
-//     k = 0;
-// }
+           int ans = 0;
+    if (numOnes <= k) {
+        ans += numOnes;
+        k -= numOnes;
+    } else {
+        ans += k;
+        k = 0;
+    }
 
-// if (k == 0) {
-//     return ans;
-// }
+    if (k == 0) {
+        return ans;
+    }
 
-// if (numZeros <= k) {
-//     k -= numZeros;
-// } else {
-//     k = 0;
-// }
+    if (numZeros <= k) {
+        k -= numZeros;
+    } else {
+        k = 0;
+    }
 
-// if (k == 0) {
-//     return ans;
-// }
+    if (k == 0) {
+        return ans;
+    }
 
-// if (numNegOnes <= k) {
-//     ans -= numNegOnes;
-// } else {
-//     ans -= k;
-// }
+    if (numNegOnes <= k) {
+        ans -= numNegOnes;
+    } else {
+        ans -= k;
+    }
 
-// return ans;
+    return ans;
         
-        // int ans=0;
-        // if(k<numOnes){
-        //     return k;
-        // }else if(k>numOnes){
-        //     ans+=numOnes;
-        //     k-=numOnes;
-        // }
-        return Math.min(k,numOnes)-Math.max(0,k-numOnes-numZeros);
+//         int ans=0;
+//         if(k<numOnes){
+//             return k;
+//         }else if(k>numOnes){
+//             ans+=numOnes;
+//             k-=numOnes;
+            
+//             if(k>numZeros){
+//                 ans+=0;
+//                 k-=numZeros;
+//                 if(k<numNegOnes){
+//                     ans-=k;
+//                 }else if(k>=numNegOnes){
+//                     ans-=k;
+//                 }
+//             }
+//         }
+//         return ans;
+        // return Math.min(k,numOnes)-Math.max(0,k-numOnes-numZeros);
     }
 }
