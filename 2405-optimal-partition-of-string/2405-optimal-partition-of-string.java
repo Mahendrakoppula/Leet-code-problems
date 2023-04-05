@@ -17,16 +17,27 @@ class Solution {
 //         }
 //         return count;
         
-        int[] arr = new int[26];
-        int ans = 0;
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
-            if(arr[ch-'a']>0){
+        // int[] arr = new int[26];
+        // int ans = 0;
+        // for(int i=0;i<s.length();i++){
+        //     char ch = s.charAt(i);
+        //     if(arr[ch-'a']>0){
+        //         ans++;
+        //         arr = new int[26];
+        //     }
+        //     arr[ch-'a']++;
+        // }
+        // return ans + 1;
+        
+        int[] arr= new int[26];
+        int ans=0;
+        for(char c: s.toCharArray()){
+            if(arr[c-'a']>0){
                 ans++;
-                arr = new int[26];
+                arr= new int[26];
             }
-            arr[ch-'a']++;
+            arr[c-'a']++;
         }
-        return ans + 1;
+        return ans+1;
     }
 }
