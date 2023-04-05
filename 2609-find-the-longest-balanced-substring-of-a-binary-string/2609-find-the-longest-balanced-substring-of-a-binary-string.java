@@ -36,29 +36,26 @@ class Solution {
         
         while(i < n)
         {
-            int count_0 = 0, count_1 = 0;
+            int countZero = 0, countOne = 0;
             
-            // count the no. of continuous '0'
             
             while(i < n && str[i] == '0')
             {
-                count_0++;
+                countZero++;
                 
                 i++;
             }
             
-            // count the no. of continuous '1'
             
             while(i < n && str[i] == '1')
             {
-                count_1++;
+                countOne++;
                 
                 i++;
             }
             
-            // update maxi
             
-            maxi = Math.max(maxi, 2 * Math.min(count_0, count_1));
+            maxi = Math.max(maxi, 2 * Math.min(countZero, countOne));
         }
         
         return maxi;
