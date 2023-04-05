@@ -48,25 +48,25 @@ class Solution {
 //         return maxi;
         
 
-         int longest = 0;
+         int maxcount = 0;
         Stack<Character> stack = new Stack<>();
-        int matches = 0;
+        int count = 0;
         
         for (char c : s.toCharArray()) {
             if (c == '0') {
-                if (matches > 0) {
+                if (count > 0) {
                     stack = new Stack<>();
                 }
-                matches = 0;
+                count = 0;
                 stack.push(c);
             } else if (c == '1' && !stack.isEmpty()) {
                 stack.pop();
-                matches += 2;
-                longest = Math.max(longest, matches);
+                count += 2;
+                maxcount = Math.max(maxcount, count);
             }
         }
         
-        return Math.max(longest, matches) ;
+        return Math.max(maxcount, count) ;
 
     }  
 }
