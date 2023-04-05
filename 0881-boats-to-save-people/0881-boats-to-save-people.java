@@ -61,10 +61,6 @@ class Solution {
 
 //         }
 //         return boatCount;
-        
-           if (people == null || people.length == 0 || limit <= 0) {
-        return 0; // edge case: empty or null array, or invalid limit
-    }
 
     int boatCount = 0, left = 0, right = people.length - 1;
     Arrays.sort(people); // sort the people by weight
