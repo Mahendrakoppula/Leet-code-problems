@@ -25,39 +25,48 @@ class Solution {
         
         
         
-        char[] str=s.toCharArray();
-        int n = str.length;
+//         char[] str=s.toCharArray();
+//         int n = str.length;
+//         int maxi = 0;
+//         int i = 0;
+//         while(i < n)
+//         {
+//             int countZero = 0, countOne = 0;
+//             while(i < n && str[i] == '0')
+//             {
+//                 countZero++;
+//                 i++;
+//             }
+//             while(i < n && str[i] == '1')
+//             {
+//                 countOne++;
+//                 i++;
+//             }
+//             maxi = Math.max(maxi, 2 * Math.min(countZero, countOne));
+//         }
         
-        int maxi = 0;
+//         return maxi;
         
-        // traverse over the str and find maxi
+
+         int longest = 0;
+        Stack<Character> stack = new Stack<>();
+        int matches = 0;
         
-        int i = 0;
-        
-        while(i < n)
-        {
-            int countZero = 0, countOne = 0;
-            
-            
-            while(i < n && str[i] == '0')
-            {
-                countZero++;
-                
-                i++;
+        for (char c : s.toCharArray()) {
+            if (c == '0') {
+                if (matches > 0) {
+                    stack = new Stack<>();
+                }
+                matches = 0;
+                stack.push(c);
+            } else if (c == '1' && !stack.isEmpty()) {
+                stack.pop();
+                matches += 1;
+                longest = Math.max(longest, matches);
             }
-            
-            
-            while(i < n && str[i] == '1')
-            {
-                countOne++;
-                
-                i++;
-            }
-            
-            
-            maxi = Math.max(maxi, 2 * Math.min(countZero, countOne));
         }
         
-        return maxi;
-    }
+        return Math.max(longest, matches) * 2;
+
+    }  
 }
