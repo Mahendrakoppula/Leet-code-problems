@@ -20,7 +20,8 @@ class Solution {
         
         
            int ans = 0;
-    if (numOnes <= k) {
+    // if (numOnes <= k) 
+    if (k>=numOnes){
         ans += numOnes;
         k -= numOnes;
     } else {
