@@ -1,5 +1,5 @@
 class Solution {
-    public int numRescueBoats(int[] people, int limit) {
+    public int numRescueBoats(int[] nums, int limit) {
 //         Arrays.sort(nums);
 //         int i=0;
 //         int j= nums.length-1;
@@ -40,39 +40,18 @@ class Solution {
 // }
 // return boatCount;
 //     }
-        
-//       int boatCount = 0, left = 0, right = nums.length-1;
-//         while(left <= right){
-//             if(nums[right]==limit){
-//                 boatCount++;
-//                 right--;
-//             }else if(nums[left]==limit){
-//                 boatCount++;
-//                 left++;
-//             }else if(nums[left] + nums[right] <= limit){
-//                 left++;
-//                 right--;
-//                 boatCount++;
-//             }
-//             else{
-//                 right--;
-//                 boatCount++;
-//             }
 
-//         }
-//         return boatCount;
-
-    int boatCount = 0, left = 0, right = people.length - 1;
-    Arrays.sort(people); // sort the people by weight
+    int boatCount = 0, left = 0, right = nums.length - 1;
+    Arrays.sort(nums); 
 
     while (left <= right) {
-        if (people[right] == limit) {
+        if (nums[right] == limit) {
             boatCount++;
             right--;
-        } else if (people[left] == limit) {
+        } else if (nums[left] == limit) {
             boatCount++;
             left++;
-        } else if (people[left] + people[right] <= limit) {
+        } else if (nums[left] + nums[right] <= limit) {
             left++;
             right--;
             boatCount++;
