@@ -61,12 +61,12 @@ class Solution {
                 stack.push(c);
             } else if (c == '1' && !stack.isEmpty()) {
                 stack.pop();
-                matches += 1;
+                matches += 2;
                 longest = Math.max(longest, matches);
             }
         }
         
-        return Math.max(longest, matches) * 2;
+        return Math.max(longest, matches) ;
 
     }  
 }
