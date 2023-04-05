@@ -19,37 +19,36 @@ class Solution {
         // return sum;
         
         
-           int ans = 0;
-    // if (numOnes <= k) 
-    if (k>=numOnes){
-        ans += numOnes;
-        k -= numOnes;
-    } else {
-        ans += k;
-        k = 0;
-    }
+         int ans = 0;
+                if (k>=numOnes){
+                ans += numOnes;
+                k -= numOnes;
+            } else {
+                ans += k;
+                k = 0;
+            }
 
-    if (k == 0) {
-        return ans;
-    }
+            if (k == 0) {
+                return ans;
+            }
 
-    if (numZeros <= k) {
-        k -= numZeros;
-    } else {
-        k = 0;
-    }
 
-    if (k == 0) {
-        return ans;
-    }
+            if (k>=numZeros) {
+                k -= numZeros;
+            } else {
+                k = 0;
+            }
 
-    if (numNegOnes <= k) {
-        ans -= numNegOnes;
-    } else {
-        ans -= k;
-    }
+            if (k == 0) {
+                return ans;
+            }
+            if (k>=numNegOnes) {
+                ans -= numNegOnes;
+            } else {
+                ans -= k;
+            }
 
-    return ans;
+            return ans;
         
 //         int ans=0;
 //         if(k<numOnes){
