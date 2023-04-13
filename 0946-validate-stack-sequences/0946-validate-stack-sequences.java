@@ -45,28 +45,27 @@ class Solution {
     // }
     // return stack.isEmpty();
         
-    //     Stack<Integer> stack = new Stack<>();
-    // int i = 0;
-    // int j = 0;
-    // while (i < pushed.length) {
-    //     stack.push(pushed[i]);
-    //     while (!stack.isEmpty() && stack.peek() == popped[j]) {
-    //         stack.pop();
-    //         j++;
-    //     }
-    //     i++;
-    // }
-    // return stack.isEmpty();
-        
-         int n = pushed.length;
-    int i = 0, j = 0;
-    for (int k : pushed) {
-        pushed[i++] = k;
-        while (i > 0 && pushed[i - 1] == popped[j]) {
-            i--;
+        Stack<Integer> stack = new Stack<>();
+ 
+    int j = 0;
+    for(int i: pushed){
+        stack.push(i);
+        while(!stack.isEmpty() && stack.peek()==popped[j]){
+            stack.pop();
             j++;
         }
     }
-    return i == 0;
+    return stack.isEmpty();
+        
+    //      int n = pushed.length;
+    // int i = 0, j = 0;
+    // for (int k : pushed) {
+    //     pushed[i++] = k;
+    //     while (i > 0 && pushed[i - 1] == popped[j]) {
+    //         i--;
+    //         j++;
+    //     }
+    // }
+    // return i == 0;
     }
 }
