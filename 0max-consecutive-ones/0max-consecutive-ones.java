@@ -18,21 +18,21 @@ class Solution {
 
 //         }
 //         return maxcount;
-        for (int i : nums) {
-    if (i == 1) {
-        count++;
-    } else {
-        if (count > maxcount) {
-            maxcount = count;
+            for (int i : nums) {
+        if (i == 1) {
+            count++;
+        } else {
+            if (count > maxcount) {
+                maxcount = count;
+            }
+            count = 0;
         }
-        count = 0;
     }
-}
 
-if (count > maxcount) {
-    maxcount = count;
-}
-
-return maxcount;
+    if (count > maxcount) {
+        maxcount = count;
     }
-}
+
+    return maxcount;
+        }
+    }
