@@ -1,7 +1,7 @@
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
-             int count=0;
-        int maxcount=0;
+        //      int count=0;
+        // int maxcount=0;
 //         Stack<Integer> st= new Stack<>();
 
 //         for(int i: nums){
@@ -18,21 +18,42 @@ class Solution {
 
 //         }
 //         return maxcount;
-            for (int i : nums) {
-        if (i == 1) {
-            count++;
+        
+        
+        
+//             for (int i : nums) {
+//         if (i == 1) {
+//             count++;
+//         } else {
+//             if (count > maxcount) {
+//                 maxcount = count;
+//             }
+//             count = 0;
+//         }
+//     }
+
+//     if (count > maxcount) {
+//         maxcount = count;
+//     }
+
+//     return maxcount;
+        
+    int maxcount = 0;
+    int start = 0;
+    int end = 0;
+
+    while (end < nums.length) {
+        if (nums[end] == 1) {
+            end++;
         } else {
-            if (count > maxcount) {
-                maxcount = count;
-            }
-            count = 0;
+            maxcount = Math.max(maxcount, end - start);
+            end++;
+            start = end;
         }
     }
 
-    if (count > maxcount) {
-        maxcount = count;
-    }
+    maxcount = Math.max(maxcount, end - start);
 
     return maxcount;
+            }
         }
-    }
