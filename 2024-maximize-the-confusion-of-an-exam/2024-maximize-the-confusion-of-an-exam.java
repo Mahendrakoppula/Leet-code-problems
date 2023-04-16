@@ -109,26 +109,70 @@ class Solution {
 //         return maxCount;
         
  
-        int n = answerKey.length();
-        int left = 0, right = 0;
-        int maxCount = 0, countT = 0, countF = 0;
+        // int n = answerKey.length();
+        // int left = 0, right = 0;
+        // int maxCount = 0, countT = 0, countF = 0;
+        // while (right < n) {
+        //     if (answerKey.charAt(right) == 'T') {
+        //         countT++;
+        //     } else {
+        //         countF++;
+        //     }
+        //     while (Math.min(countT, countF) > k) {
+        //         if (answerKey.charAt(left) == 'T') {
+        //             countT--;
+        //         } else {
+        //             countF--;
+        //         }
+        //         left++;
+        //     }
+        //     maxCount = Math.max(maxCount, right - left + 1);
+        //     right++;
+        // }
+        // return maxCount;
+        
+        //  int n = answerKey.length();
+        // int left = 0, right = 0;
+        // int maxCount = 0;
+        // int count = 0, changes = 0;
+        // while (right < n) {
+        //     if (answerKey.charAt(right) != answerKey.charAt(left)) {
+        //         changes++;
+        //     }
+        //     while (changes > k) {
+        //         if (answerKey.charAt(left) != answerKey.charAt(left + 1)) {
+        //             changes--;
+        //         }
+        //         left++;
+        //     }
+        //     count = Math.max(count, right - left + 1);
+        //     right++;
+        // }
+        // return count;
+        
+          int n = answerKey.length();
+        int left = 0, right = 0, maxCount = 0, tCount = 0, fCount = 0;
+
         while (right < n) {
             if (answerKey.charAt(right) == 'T') {
-                countT++;
+                tCount++;
             } else {
-                countF++;
+                fCount++;
             }
-            while (Math.min(countT, countF) > k) {
+
+            while (Math.min(tCount, fCount) > k) {
                 if (answerKey.charAt(left) == 'T') {
-                    countT--;
+                    tCount--;
                 } else {
-                    countF--;
+                    fCount--;
                 }
                 left++;
             }
+
             maxCount = Math.max(maxCount, right - left + 1);
             right++;
         }
+
         return maxCount;
     }
 }
