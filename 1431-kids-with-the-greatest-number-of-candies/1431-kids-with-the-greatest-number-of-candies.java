@@ -16,21 +16,23 @@ class Solution {
 //         return list;
         
         List<Boolean> list = new ArrayList<>();
-       for (int i=0;i<candies.length;i++){
-           list.add(true);
-       }
-        int min = candies[0];
+       // for (int i=0;i<candies.length;i++){
+       //     list.add(true);
+       // }
+        int max = candies[0];
         for (int i = 0; i < candies.length; i++) {
-            if (candies[i] > min) {
-                min = candies[i];
+            if (candies[i] > max) {
+                max = candies[i];
 //                list.set(i, false);
             }
         }
                 for (int i = 0; i <= candies.length - 1; i++) {
-
-            candies[i] = candies[i] + extraCandies;
-                    if (candies[i]<min){
-                        list.set(i,false);
+                  
+            candies[i] = candies[i] + extraCandies;  
+                    if (candies[i]<max){
+                        list.add(false);
+                    }else{
+                         list.add(true);
                     }
         }
         return list;
