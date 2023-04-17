@@ -3,9 +3,9 @@ class Solution {
 //         List<Boolean>list= new ArrayList<>(candies.length);
 //         Collections.fill(list,true);
 //         int min=arr[0];
-//         // for(int i=0;i<=candies.length-1;i++){
-//         //     candies[i]=candies[i]+extraCandies;
-//         // }
+//         for(int i=0;i<=candies.length-1;i++){
+//             candies[i]=candies[i]+extraCandies;
+//         }
         
 //    for (int i = 0; i <candies.length; i++) {
 //         if (candies[i] < min) {
@@ -20,8 +20,6 @@ class Solution {
            list.add(true);
        }
         int min = candies[0];
-
-
         for (int i = 0; i < candies.length; i++) {
             if (candies[i] > min) {
                 min = candies[i];
