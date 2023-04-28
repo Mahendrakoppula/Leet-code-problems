@@ -72,7 +72,9 @@ class Solution {
 //     return stack.isEmpty();
         
 //         Stack<Integer>st= new Stack<>();
-//         if()
+//             if (head == null || head.next == null) {
+//         return true;
+//     }
 //         while(head!=null){
 // //            al.add(head.value);
 //             if( st.isEmpty()){
@@ -90,10 +92,10 @@ class Solution {
 //         return false;
         
         
-         if (head == null || head.next == null) {
+     
+     if (head == null || head.next == null) {
         return true;
     }
-    
     // find the middle of the linked list
     ListNode slow = head;
     ListNode fast = head;
