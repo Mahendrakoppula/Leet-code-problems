@@ -43,16 +43,32 @@ class Solution {
 //         }
 //         return false;
         
-        ArrayList<Integer> original = new ArrayList<>();
-    ArrayList<Integer> reversed = new ArrayList<>();
-    while (head != null) {
-        original.add(head.val);
-        reversed.add(0, head.val);
-        head = head.next;
+    //     ArrayList<Integer> original = new ArrayList<>();
+    // ArrayList<Integer> reversed = new ArrayList<>();
+    // while (head != null) {
+    //     original.add(head.val);
+    //     reversed.add(0, head.val);
+    //     head = head.next;
+    // }
+    // if (original.equals(reversed)) {
+    //     return true;
+    // } 
+    //     return false;
+        
+        
+        Stack<Integer> stack = new Stack<>();
+    ListNode curr = head;
+    while (curr != null) {
+        stack.push(curr.val);
+        curr = curr.next;
     }
-    if (original.equals(reversed)) {
-        return true;
-    } 
-        return false;
+    curr = head;
+    while (curr != null) {
+        if (curr.val != stack.pop()) {
+            return false;
+        }
+        curr = curr.next;
+    }
+    return stack.isEmpty();
 }
 }
