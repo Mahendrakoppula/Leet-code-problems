@@ -56,19 +56,73 @@ class Solution {
     //     return false;
         
         
-        Stack<Integer> stack = new Stack<>();
-    ListNode curr = head;
-    while (curr != null) {
-        stack.push(curr.val);
-        curr = curr.next;
+//         Stack<Integer> stack = new Stack<>();
+//     ListNode curr = head;
+//     while (curr != null) {
+//         stack.push(curr.val);
+//         curr = curr.next;
+//     }
+//     curr = head;
+//     while (curr != null) {
+//         if (curr.val != stack.pop()) {
+//             return false;
+//         }
+//         curr = curr.next;
+//     }
+//     return stack.isEmpty();
+        
+//         Stack<Integer>st= new Stack<>();
+//         if()
+//         while(head!=null){
+// //            al.add(head.value);
+//             if( st.isEmpty()){
+//                 st.push(head.val);
+//             }else if (head.val==st.peek()){
+//                 st.pop();
+//             }else {
+//                 st.push(head.val);
+//             }
+//             head=head.next;
+//         }
+//         if(st.empty()){
+//            return true;
+//         }
+//         return false;
+        
+        
+         if (head == null || head.next == null) {
+        return true;
     }
-    curr = head;
+    
+    // find the middle of the linked list
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast.next != null && fast.next.next != null) {
+        slow = slow.next;
+        fast = fast.next.next;
+    }
+    
+    // reverse the second half of the linked list
+    ListNode prev = null;
+    ListNode curr = slow.next;
     while (curr != null) {
-        if (curr.val != stack.pop()) {
+        ListNode next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+    slow.next = prev;
+    
+    // compare the first and second halves of the linked list
+    ListNode p1 = head;
+    ListNode p2 = prev;
+    while (p2 != null) {
+        if (p1.val != p2.val) {
             return false;
         }
-        curr = curr.next;
+        p1 = p1.next;
+        p2 = p2.next;
     }
-    return stack.isEmpty();
+    return true;
 }
 }
