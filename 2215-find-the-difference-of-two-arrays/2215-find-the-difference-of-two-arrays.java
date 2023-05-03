@@ -57,24 +57,46 @@ class Solution {
 //         return ans;
         
         
-        Set<Integer> n1 = new HashSet<>();
-Set<Integer> n2 = new HashSet<>();
-for (int i : nums1) {
-    n1.add(i);
-}
-for (int i : nums2) {
-    n2.add(i);
-}
+//         Set<Integer> n1 = new HashSet<>();
+// Set<Integer> n2 = new HashSet<>();
+// for (int i : nums1) {
+//     n1.add(i);
+// }
+// for (int i : nums2) {
+//     n2.add(i);
+// }
 
-Set<Integer> intersection = new HashSet<>(n1);
-intersection.retainAll(n2);
+// Set<Integer> intersection = new HashSet<>(n1);
+// intersection.retainAll(n2);
 
-n1.removeAll(intersection);
-n2.removeAll(intersection);
+// n1.removeAll(intersection);
+// n2.removeAll(intersection);
 
-List<List<Integer>> ans = new ArrayList<>();
-ans.add(new ArrayList<>(n1));
-ans.add(new ArrayList<>(n2));
-return ans;
+// List<List<Integer>> ans = new ArrayList<>();
+// ans.add(new ArrayList<>(n1));
+// ans.add(new ArrayList<>(n2));
+// return ans;
+        
+        
+         List<Integer> diff1 = getDifference(nums1, nums2);
+        List<Integer> diff2 = getDifference(nums2, nums1);
+        return Arrays.asList(diff1, diff2);
+    }
+
+    private List<Integer> getDifference(int[] nums1, int[] nums2) {
+        List<Integer> difference = new ArrayList<>();
+        boolean[] seen = new boolean[2001];
+
+        for (int i : nums2) {
+            seen[i + 1000] = true;
+        }
+
+        for (int i : nums1) {
+            if (!seen[i + 1000]) {
+                seen[i + 1000] = true;
+                difference.add(i);
+            }
+        }
+        return difference;
     }
 }
