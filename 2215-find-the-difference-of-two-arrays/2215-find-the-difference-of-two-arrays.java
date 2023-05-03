@@ -28,32 +28,53 @@ class Solution {
 //         }
         // return ans;
         
-        Set<Integer> n1= new HashSet<>();
-        Set<Integer>n2= new HashSet<>();
-        List<Integer> list= new ArrayList<>();
-        for(int i:nums1){
-            n1.add(i);
-        }
-        for (int i:nums2){
-            n2.add(i);
-        }
+//         Set<Integer> n1= new HashSet<>();
+//         Set<Integer>n2= new HashSet<>();
+//         List<Integer> list= new ArrayList<>();
+//         for(int i:nums1){
+//             n1.add(i);
+//         }
+//         for (int i:nums2){
+//             n2.add(i);
+//         }
 
-        for (int i:nums2){
-            if(n1.contains(i)){
-                list.add(i);
-            }
-        }
-        for (int i:list){
-            n1.remove(i);
-        }
+//         for (int i:nums2){
+//             if(n1.contains(i)){
+//                 list.add(i);
+//             }
+//         }
+//         for (int i:list){
+//             n1.remove(i);
+//         }
 
-        for (int i:list){
-            n2.remove(i);
-        }
+//         for (int i:list){
+//             n2.remove(i);
+//         }
 
-        List<List<Integer>> ans= new ArrayList<>();
-        ans.add(new ArrayList<>(n1));
-        ans.add(new ArrayList<>(n2));
-        return ans;
+//         List<List<Integer>> ans= new ArrayList<>();
+//         ans.add(new ArrayList<>(n1));
+//         ans.add(new ArrayList<>(n2));
+//         return ans;
+        
+        
+        Set<Integer> n1 = new HashSet<>();
+Set<Integer> n2 = new HashSet<>();
+for (int i : nums1) {
+    n1.add(i);
+}
+for (int i : nums2) {
+    n2.add(i);
+}
+
+Set<Integer> intersection = new HashSet<>(n1);
+intersection.retainAll(n2);
+
+n1.removeAll(intersection);
+n2.removeAll(intersection);
+
+List<List<Integer>> ans = new ArrayList<>();
+ans.add(new ArrayList<>(n1));
+ans.add(new ArrayList<>(n2));
+return ans;
     }
 }
